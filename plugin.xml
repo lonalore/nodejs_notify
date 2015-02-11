@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e107Plugin name="Node.js Notifications" lan="LAN_PLUGIN__NODEJS_NOTIFY_NAME" version="1.0" date="2015-02-05" compatibility="2.0" installRequired="true">
+    <author name="lonalore" url="http://lonalore.hu"/>
+    <summary lan="LAN_PLUGIN__NODEJS_NOTIFY_SUMM">Node.js Notifications</summary>
+    <description lan="LAN_PLUGIN__NODEJS_NOTIFY_DESC">Displaying realtime notification from Node.js.</description>
+    <keywords>
+        <word>nodejs</word>
+        <word>server</word>
+        <word>api</word>
+    </keywords>
+    <category>tools</category>
+    <copyright></copyright>
+    <adminLinks>
+        <link url="admin_config.php" description="" icon="images/nodejs_32.png" iconSmall="images/nodejs_16.png" primary="true">LAN_CONFIGURE</link>
+    </adminLinks>
+    <pluginPrefs>
+        <pref name='nodejs_notify_time'>3</pref>
+    </pluginPrefs>
+    <dependencies>
+        <plugin name='nodejs' min_version='1.0' />
+    </dependencies>
+</e107Plugin>
