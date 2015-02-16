@@ -40,7 +40,9 @@ class nodejs_notify_nodejs {
 	 * 	The list of user channels.
 	 */
 	public function userChannels() {
-		return array();
+		return array(
+			// 'nodejs_notify_',
+		);
 	}
 
 
