@@ -23,8 +23,8 @@ class nodejs_notify_e_header {
    */
   function include_components() {
 
-    e107::css('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.css');
-    e107::js('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.js', 'jquery', 2);
+    e107::css('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.min.css');
+    e107::js('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.min.js', 'jquery', 2);
 
     $options = nodejs_json_encode(array('notification_time' => 3));
     $js_config = 'var e107NodejsNotify = e107NodejsNotify || { settings: ' . $options . ' };';
