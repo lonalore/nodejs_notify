@@ -82,7 +82,7 @@ class nodejs_notify_notify_ui extends e_admin_ui
 		if (isset($_POST['submit'])) {
 			$mes = e107::getMessage();
 
-			e107_require_once(e_PLUGIN . 'nodejs/classes/nodejs.main.php');
+			e107_require_once(e_PLUGIN . 'nodejs/nodejs.main.php');
 			nodejs_broadcast_message($_POST['subject'], $_POST['message']);
 
 			$mes->addSuccess(LAN_AC_NODEJS_NOTIFY_04);

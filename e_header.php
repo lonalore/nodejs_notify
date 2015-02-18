@@ -9,6 +9,8 @@ if (!defined('e107_INIT')) {
   exit;
 }
 
+e107_require_once(e_PLUGIN . 'nodejs/nodejs.main.php');
+
 /**
  * Class nodejs_notify_e_header.
  */
