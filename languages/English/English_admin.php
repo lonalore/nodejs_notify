@@ -20,5 +20,5 @@ define('LAN_AI_NODEJS_NOTIFY_08', 'Bottom-Left');
 define('LAN_AI_NODEJS_NOTIFY_09', 'Bottom-Right');
 define('LAN_AI_NODEJS_NOTIFY_10', 'Center');
 
-define('LAN_AD_NODEJS_NOTIFY_01', 'The protocol used to communicate with the Node.js server.');
+define('LAN_AD_NODEJS_NOTIFY_01', 'The lifespan of a non-sticky message on the screen.');
 define('LAN_AD_NODEJS_NOTIFY_02', 'Designates a class which is applied to the jGrowl container and controls its position on the screen.');
