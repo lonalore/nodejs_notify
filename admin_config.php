@@ -66,6 +66,19 @@ class nodejs_notify_main_ui extends e_admin_ui
 			'data' => 'int',
 			'tab' => 0,
 		),
+		'nodejs_notify_pos' => array(
+			'title' => LAN_AI_NODEJS_NOTIFY_05,
+			'description' => LAN_AD_NODEJS_NOTIFY_02,
+			'type' => 'dropdown',
+			'writeParms' => array(
+				'top-left' => LAN_AI_NODEJS_NOTIFY_06,
+				'top-right' => LAN_AI_NODEJS_NOTIFY_07,
+				'bottom-left' => LAN_AI_NODEJS_NOTIFY_08,
+				'bottom-right' => LAN_AI_NODEJS_NOTIFY_09,
+				'center' => LAN_AI_NODEJS_NOTIFY_10,
+			),
+			'tab' => 0,
+		),
 	);
 }
 

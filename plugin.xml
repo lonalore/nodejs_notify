@@ -15,6 +15,7 @@
     </adminLinks>
     <pluginPrefs>
         <pref name='nodejs_notify_time'>3</pref>
+        <pref name='nodejs_notify_pos'>bottom-left</pref>
     </pluginPrefs>
     <dependencies>
         <plugin name='nodejs' min_version='1.0' />
