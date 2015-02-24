@@ -6,7 +6,7 @@
 
 require_once('../../class2.php');
 
-if (!getperms('P'))
+if(!getperms('P'))
 {
 	header('location:' . e_BASE . 'index.php');
 	exit;
@@ -15,6 +15,7 @@ if (!getperms('P'))
 // [PLUGINS]/nodejs_notify/languages/[LANGUAGE]/[LANGUAGE]_admin.php
 e107::lan('nodejs_notify', true, true);
 
+
 /**
  * Class nodejs_notify_admin.
  */
@@ -22,30 +23,31 @@ class nodejs_notify_admin extends e_admin_dispatcher
 {
 
 	protected $modes = array(
-		'main' => array(
+		'main'   => array(
 			'controller' => 'nodejs_notify_main_ui',
-			'path' => null,
+			'path'       => null,
 		),
 		'notify' => array(
 			'controller' => 'nodejs_notify_notify_ui',
-			'path' => null,
+			'path'       => null,
 		),
 	);
 
 	protected $adminMenu = array(
-		'main/prefs' => array(
+		'main/prefs'  => array(
 			'caption' => LAN_AC_NODEJS_NOTIFY_01,
-			'perm' => 'P',
+			'perm'    => 'P',
 		),
 		'notify/send' => array(
 			'caption' => LAN_AC_NODEJS_NOTIFY_03,
-			'perm' => 'P',
+			'perm'    => 'P',
 		),
 	);
 
 	protected $menuTitle = LAN_PLUGIN__NODEJS_NOTIFY_NAME;
 
 }
+
 
 /**
  * Class nodejs_notify_admin_ui.
@@ -54,33 +56,34 @@ class nodejs_notify_main_ui extends e_admin_ui
 {
 
 	protected $pluginTitle = LAN_PLUGIN__NODEJS_NOTIFY_NAME;
-	protected $pluginName = "nodejs_notify";
-	protected $preftabs = array(
+	protected $pluginName  = "nodejs_notify";
+	protected $preftabs    = array(
 		LAN_AC_NODEJS_NOTIFY_02,
 	);
-	protected $prefs = array(
+	protected $prefs       = array(
 		'nodejs_notify_time' => array(
-			'title' => LAN_AI_NODEJS_NOTIFY_01,
+			'title'       => LAN_AI_NODEJS_NOTIFY_01,
 			'description' => LAN_AD_NODEJS_NOTIFY_01,
-			'type' => 'number',
-			'data' => 'int',
-			'tab' => 0,
+			'type'        => 'number',
+			'data'        => 'int',
+			'tab'         => 0,
 		),
-		'nodejs_notify_pos' => array(
-			'title' => LAN_AI_NODEJS_NOTIFY_05,
+		'nodejs_notify_pos'  => array(
+			'title'       => LAN_AI_NODEJS_NOTIFY_05,
 			'description' => LAN_AD_NODEJS_NOTIFY_02,
-			'type' => 'dropdown',
-			'writeParms' => array(
-				'top-left' => LAN_AI_NODEJS_NOTIFY_06,
-				'top-right' => LAN_AI_NODEJS_NOTIFY_07,
-				'bottom-left' => LAN_AI_NODEJS_NOTIFY_08,
+			'type'        => 'dropdown',
+			'writeParms'  => array(
+				'top-left'     => LAN_AI_NODEJS_NOTIFY_06,
+				'top-right'    => LAN_AI_NODEJS_NOTIFY_07,
+				'bottom-left'  => LAN_AI_NODEJS_NOTIFY_08,
 				'bottom-right' => LAN_AI_NODEJS_NOTIFY_09,
-				'center' => LAN_AI_NODEJS_NOTIFY_10,
+				'center'       => LAN_AI_NODEJS_NOTIFY_10,
 			),
-			'tab' => 0,
+			'tab'         => 0,
 		),
 	);
 }
+
 
 /**
  * Class nodejs_notify_notify_ui.
@@ -89,10 +92,12 @@ class nodejs_notify_notify_ui extends e_admin_ui
 {
 
 	protected $pluginTitle = LAN_PLUGIN__NODEJS_NOTIFY_NAME;
-	protected $pluginName = "nodejs_notify";
+	protected $pluginName  = "nodejs_notify";
 
-	function init() {
-		if (isset($_POST['submit'])) {
+	function init()
+	{
+		if(isset($_POST['submit']))
+		{
 			$mes = e107::getMessage();
 
 			e107_require_once(e_PLUGIN . 'nodejs/nodejs.main.php');
@@ -133,6 +138,7 @@ class nodejs_notify_notify_ui extends e_admin_ui
 		echo $html;
 	}
 }
+
 
 new nodejs_notify_admin();
 

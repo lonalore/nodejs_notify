@@ -4,18 +4,21 @@
  *
  */
 
+
 /**
  * Class nodejs_notify_nodejs.
  */
-class nodejs_notify_nodejs {
+class nodejs_notify_nodejs
+{
 
 	/**
 	 * Node.js Javascript handlers.
 	 *
 	 * @return array
-	 * 	The list of JavaScript handler files.
+	 *    The list of JavaScript handler files.
 	 */
-	public function jsHandlers() {
+	public function jsHandlers()
+	{
 		return array(
 			'js/nodejs_notify.js',
 		);
@@ -26,9 +29,10 @@ class nodejs_notify_nodejs {
 	 * Node.js message handlers.
 	 *
 	 * @return array
-	 * 	The list of message callbacks.
+	 *    The list of message callbacks.
 	 */
-	public function msgHandlers() {
+	public function msgHandlers()
+	{
 		return array();
 	}
 
@@ -37,11 +41,11 @@ class nodejs_notify_nodejs {
 	 * Node.js user channels.
 	 *
 	 * @return array
-	 * 	The list of user channels.
+	 *    The list of user channels.
 	 */
-	public function userChannels() {
-		return array(
-			// 'nodejs_notify_',
+	public function userChannels()
+	{
+		return array(// 'nodejs_notify_',
 		);
 	}
 
@@ -52,9 +56,10 @@ class nodejs_notify_nodejs {
 	 * @param $account
 	 *
 	 * @return array
-	 * 	List of users who can see presence notifications about me.
+	 *    List of users who can see presence notifications about me.
 	 */
-	public function userPresenceList($account) {
+	public function userPresenceList($account)
+	{
 		return array();
 	}
 

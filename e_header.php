@@ -5,12 +5,13 @@
  * files to page header.
  */
 
-if (!defined('e107_INIT'))
+if(!defined('e107_INIT'))
 {
 	exit;
 }
 
 e107_require_once(e_PLUGIN . 'nodejs/nodejs.main.php');
+
 
 /**
  * Class nodejs_notify_e_header.
@@ -34,13 +35,13 @@ class nodejs_notify_e_header
 		e107::js('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.min.js', 'jquery', 2);
 
 		$time = e107::getPlugConfig('nodejs_notify')
-								->getPref('nodejs_notify_time', 3);
+			->getPref('nodejs_notify_time', 3);
 		$position = e107::getPlugConfig('nodejs_notify')
-										->getPref('nodejs_notify_pos', 'bottom-left');
+			->getPref('nodejs_notify_pos', 'bottom-left');
 
 		$js_options = array(
 			'notification_time' => $time,
-			'position' => $position,
+			'position'          => $position,
 		);
 
 		$options = nodejs_json_encode($js_options);
@@ -49,6 +50,7 @@ class nodejs_notify_e_header
 		e107::js('inline', $js_config, null, 3);
 	}
 }
+
 
 // Class instantiation.
 new nodejs_notify_e_header;
