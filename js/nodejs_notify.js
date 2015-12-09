@@ -1,8 +1,8 @@
 (function ($) {
-    e107Nodejs.Nodejs.callbacks.nodejsNotify = {
+    e107.Nodejs.callbacks.nodejsNotify = {
         callback: function (message) {
-            var notifyTime = e107NodejsNotify.settings.notification_time;
-            var notifyPosition = e107NodejsNotify.settings.position;
+            var notifyTime = e107.settings.nodejs_notify.notification_time;
+            var notifyPosition = e107.settings.nodejs_notify.position;
 
             if (notifyTime > 0) {
                 $.jGrowl(message.data.body, {
