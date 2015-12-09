@@ -113,22 +113,22 @@ class nodejs_notify_notify_ui extends e_admin_ui
 
 		$html = $frm->open('notify-form', 'post', 'admin_config.php?mode=notify&action=send');
 
-		$html .= '<div class="control-group">';
+		$html .= '<div class="form-group">';
 		$html .= '<label class="control-label col-sm-2" for="subject">' . LAN_AI_NODEJS_NOTIFY_03 . '</label>';
-		$html .= '<div class="controls">';
+		$html .= '<div class="col-sm-10">';
 		$html .= $frm->text('subject', '', 100, array('size' => 'large', 'required' => 1));
 		$html .= '</div>';
 		$html .= '</div>';
 
-		$html .= '<div class="control-group">';
+		$html .= '<div class="form-group">';
 		$html .= '<label class="control-label col-sm-2" for="message">' . LAN_AI_NODEJS_NOTIFY_04 . '</label>';
-		$html .= '<div class="controls">';
+		$html .= '<div class="col-sm-10">';
 		$html .= $frm->textarea('message', '', 3, 100, array('required' => 1));
 		$html .= '</div>';
 		$html .= '</div>';
 
-		$html .= '<div class="control-group">';
-		$html .= '<div class="controls">';
+		$html .= '<div class="form-group">';
+		$html .= '<div class="col-sm-offset-2 col-sm-10">';
 		$html .= $frm->button('submit', 1, 'submit', LAN_AI_NODEJS_NOTIFY_02);
 		$html .= '</div>';
 		$html .= '</div>';

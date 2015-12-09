@@ -11,8 +11,8 @@ define('LAN_AC_NODEJS_NOTIFY_04', 'Broadcast üzenet küldése a felhasználókn
 
 define('LAN_AI_NODEJS_NOTIFY_01', 'Értesítés láthatóságának ideje');
 define('LAN_AI_NODEJS_NOTIFY_02', 'Értesítés küldése');
-define('LAN_AI_NODEJS_NOTIFY_03', 'Broadcast értesítés tárgya');
-define('LAN_AI_NODEJS_NOTIFY_04', 'Broadcast értesítés szövege');
+define('LAN_AI_NODEJS_NOTIFY_03', 'Értesítés tárgya');
+define('LAN_AI_NODEJS_NOTIFY_04', 'Értesítés szövege');
 define('LAN_AI_NODEJS_NOTIFY_05', 'Értesítés pozíciója');
 define('LAN_AI_NODEJS_NOTIFY_06', 'Felül-Balra');
 define('LAN_AI_NODEJS_NOTIFY_07', 'Felül-Jobbra');
