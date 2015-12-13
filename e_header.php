@@ -34,20 +34,19 @@ class nodejs_notify_e_header
 		e107::css('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.min.css');
 		e107::js('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.min.js', 'jquery', 2);
 
-		$time = e107::getPlugConfig('nodejs_notify')
-			->getPref('nodejs_notify_time', 3);
-		$position = e107::getPlugConfig('nodejs_notify')
-			->getPref('nodejs_notify_pos', 'bottom-left');
+		$time = e107::getPlugConfig('nodejs_notify')->getPref('nodejs_notify_time', 3);
+		$position = e107::getPlugConfig('nodejs_notify')->getPref('nodejs_notify_pos', 'bottom-left');
+
+		e107::js('nodejs_notify', 'libraries/audiojs/audio.min.js', 'jquery', 2);
 
 		$js_options = array(
 			'notification_time' => $time,
 			'position'          => $position,
+			'sound_path'        => SITEURLBASE . e_PLUGIN_ABS . 'nodejs_notify',
 		);
 
-		$options = nodejs_json_encode($js_options);
-		$js_config = 'var e107NodejsNotify = e107NodejsNotify || { settings: ' . $options . ' };';
-
-		e107::js('inline', $js_config, null, 3);
+		e107::js('settings', array('nodejs_notify' => $js_options));
+		e107::js('nodejs_notify', 'js/nodejs_notify.js', 'jquery', 5);
 	}
 }
 

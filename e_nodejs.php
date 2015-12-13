@@ -12,20 +12,6 @@ class nodejs_notify_nodejs
 {
 
 	/**
-	 * Node.js Javascript handlers.
-	 *
-	 * @return array
-	 *    The list of JavaScript handler files.
-	 */
-	public function jsHandlers()
-	{
-		return array(
-			'js/nodejs_notify.js',
-		);
-	}
-
-
-	/**
 	 * Node.js message handlers.
 	 *
 	 * @return array

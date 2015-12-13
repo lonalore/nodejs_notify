@@ -11,8 +11,8 @@ define('LAN_AC_NODEJS_NOTIFY_04', 'Message broadcast to all users');
 
 define('LAN_AI_NODEJS_NOTIFY_01', 'Notifications time');
 define('LAN_AI_NODEJS_NOTIFY_02', 'Send notifications');
-define('LAN_AI_NODEJS_NOTIFY_03', 'Broadcast notification subject');
-define('LAN_AI_NODEJS_NOTIFY_04', 'Broadcast notification message');
+define('LAN_AI_NODEJS_NOTIFY_03', 'Notification subject');
+define('LAN_AI_NODEJS_NOTIFY_04', 'Notification message');
 define('LAN_AI_NODEJS_NOTIFY_05', 'Position');
 define('LAN_AI_NODEJS_NOTIFY_06', 'Top-Left');
 define('LAN_AI_NODEJS_NOTIFY_07', 'Top-Right');
