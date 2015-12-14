@@ -10,8 +10,8 @@ Requirements:
 - (optional) NodeJS Forum (nodejs_forum) plugin [under development]
 
 Features:
-- Broadcast notification: Admins can write broadcast messages for every logged in user
-- Register a NodeJS (JavaScript) callback to display messages
+- Broadcast notification: Admins can send broadcast messages to logged in users
+- Provides a NodeJS (JavaScript) callback to display messages
 - Provides a simple API to allow other plugins to use a global "Notification Settings" form, where user can enable/disable diferent kind of notifications (popup message and/or sound alert). To use this global form, you have to use 'e_nodejs_notify.php' addon file in your plugin directory, and you have to define two EUFs (Extended User Field) in your plugin.xml. These EUF fields store user defined configurations to handle alert messages and sounds. You have to define two EUF fields per configuration items. How does it work? See examples in 'nodejs_pm' and 'nodejs_forum' plugins.
 
 ### Questions about this project?
