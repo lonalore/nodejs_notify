@@ -22,3 +22,7 @@ define('LAN_AI_NODEJS_NOTIFY_10', 'Center');
 
 define('LAN_AD_NODEJS_NOTIFY_01', 'The lifespan of a non-sticky message on the screen.');
 define('LAN_AD_NODEJS_NOTIFY_02', 'Designates a class which is applied to the jGrowl container and controls its position on the screen.');
+
+define('LAN_AS_NODEJS_NOTIFY_01', 'Scan plugins');
+define('LAN_AS_NODEJS_NOTIFY_02', 'Scan plugin directories for additional NodeJS Notify addons');
+define('LAN_AS_NODEJS_NOTIFY_03', 'Scanning plugin directories was successful. Number of founded addon files: [summ]');

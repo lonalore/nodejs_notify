@@ -31,6 +31,10 @@ class nodejs_notify_admin extends e_admin_dispatcher
 			'controller' => 'nodejs_notify_notify_ui',
 			'path'       => null,
 		),
+		'scan'   => array(
+			'controller' => 'nodejs_notify_scan_ui',
+			'path'       => null,
+		),
 	);
 
 	protected $adminMenu = array(
@@ -40,6 +44,10 @@ class nodejs_notify_admin extends e_admin_dispatcher
 		),
 		'notify/send' => array(
 			'caption' => LAN_AC_NODEJS_NOTIFY_03,
+			'perm'    => 'P',
+		),
+		'scan/list'   => array(
+			'caption' => LAN_AS_NODEJS_NOTIFY_01,
 			'perm'    => 'P',
 		),
 	);
@@ -137,6 +145,56 @@ class nodejs_notify_notify_ui extends e_admin_ui
 
 		echo $html;
 	}
+}
+
+
+/**
+ * Class nodejs_notify_scan_ui.
+ */
+class nodejs_notify_scan_ui extends e_admin_ui
+{
+
+	protected $pluginTitle = LAN_PLUGIN__NODEJS_NOTIFY_NAME;
+
+
+	function listPage()
+	{
+		$fl = e107::getFile();
+		$mes = e107::getMessage();
+
+		$plugList = $fl->get_files(e_PLUGIN, "^plugin\.(php|xml)$", "standard", 1);
+		$pluginList = array();
+		$addonsList = array();
+
+		// Remove Duplicates caused by having both plugin.php AND plugin.xml.
+		foreach($plugList as $num => $val)
+		{
+			$key = basename($val['path']);
+			$pluginList[$key] = $val;
+		}
+
+		foreach($pluginList as $p)
+		{
+			$p['path'] = substr(str_replace(e_PLUGIN, '', $p['path']), 0, -1);
+			$plugin_path = $p['path'];
+
+			if(is_readable(e_PLUGIN . $plugin_path . '/e_nodejs_notify.php'))
+			{
+				$addonsList[] = $plugin_path;
+			}
+		}
+
+		e107::getPlugConfig('nodejs_notify')->set('nodejs_notify_addon_list', $addonsList)->save();
+
+		$summ = count($addonsList);
+		$message = str_replace('[summ]', $summ, LAN_AS_NODEJS_NOTIFY_03);
+
+		$mes->addInfo($message);
+		$this->addTitle(LAN_AS_NODEJS_NOTIFY_02);
+
+		echo $mes->render();
+	}
+
 }
 
 

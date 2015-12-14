@@ -21,6 +21,7 @@ e107::lan('nodejs_notify', false, true);
 
 require_once(HEADERF);
 
+
 /**
  * Class notifications.
  */
@@ -34,6 +35,15 @@ class notifications
 	 */
 	private $plugPrefs = null;
 
+
+	/**
+	 * Store field items loaded from plugin addon files.
+	 *
+	 * @var array
+	 */
+	private $rowItems = array();
+
+
 	/**
 	 * Constructor.
 	 */
@@ -41,25 +51,185 @@ class notifications
 	{
 		// Get plugin preferences.
 		$this->plugPrefs = e107::getPlugConfig('nodejs_notify')->getPref();
+		$this->rowItems = $this->getFormItems();
 
-		$this->renderForm();
+		if(!empty($this->rowItems) && USERID > 0)
+		{
+			$this->loadIncludes();
+
+			if(vartrue($_POST['update_notification_settings'], false))
+			{
+				$this->submitForm();
+			}
+
+			$this->renderForm();
+		}
+		else
+		{
+
+		}
 	}
 
 
+	/**
+	 * Submit callback for Notification settings form.
+	 */
+	function submitForm()
+	{
+		$db = e107::getDb();
+		$ms = e107::getMessage();
+
+		$allowedFields = array();
+		foreach($this->rowItems as $plugin => $data)
+		{
+			foreach($data['group_items'] as $item)
+			{
+				$allowedFields[] = 'user_plugin_' . $plugin . '_' . $item['field_alert'];
+				$allowedFields[] = 'user_plugin_' . $plugin . '_' . $item['field_sound'];
+			}
+		}
+
+		$update = array();
+		foreach($allowedFields as $field)
+		{
+			$update[$field] = (int) vartrue($_POST[$field], 0);
+		}
+		$update['WHERE'] = 'user_extended_id = ' . USERID;
+
+		$db->update('user_extended', $update);
+		$ms->addSuccess(LAN_NODEJS_NOTIFY_FRONT_04);
+	}
+
+
+	/**
+	 * Render Notification settings form.
+	 */
 	function renderForm()
 	{
-		$mes = e107::getMessage();
+		$ms = e107::getMessage();
 		$template = e107::getTemplate('nodejs_notify');
 		$sc = e107::getScBatch('nodejs_notify', true);
 		$tp = e107::getParser();
-		$frm = e107::getForm();
+		$form = e107::getForm();
 
-		$text = '...';
+		$text = $ms->render();
+		$text .= $form->open('nodejs_notify_notifications', 'post', e_SELF);
+
+		foreach($this->rowItems as $plugin => $data)
+		{
+			$header = array(
+				'title_alert' => LAN_NODEJS_NOTIFY_FRONT_02,
+				'title_sound' => LAN_NODEJS_NOTIFY_FRONT_03,
+			);
+
+			$sc->setVars($header);
+			$items = $tp->parseTemplate($template['NOTIFICATIONS']['GROUP_ITEMS']['HEADER'], true, $sc);
+
+			foreach($data['group_items'] as $item)
+			{
+				$row = array(
+					'item_label' => $item['label'],
+					'item_alert' => 'user_plugin_' . $plugin . '_' . $item['field_alert'],
+					'item_sound' => 'user_plugin_' . $plugin . '_' . $item['field_sound'],
+				);
+
+				$sc->setVars($row);
+				$items .= $tp->parseTemplate($template['NOTIFICATIONS']['GROUP_ITEMS']['ROW'], true, $sc);
+			}
+
+			$items .= $tp->parseTemplate($template['NOTIFICATIONS']['GROUP_ITEMS']['FOOTER'], true, $sc);
+
+			$group = array(
+				'group_title'       => $data['group_title'],
+				'group_description' => LAN_NODEJS_NOTIFY_FRONT_08 . ' ' . $data['group_description'],
+				'group_items'       => $items,
+			);
+
+			$sc->setVars($group);
+			$text .= $tp->parseTemplate($template['NOTIFICATIONS']['GROUP'], true, $sc);
+		}
+
+		$text .= '<div class="actions text-center">';
+		$text .= $form->hidden('update_notification_settings', 1);
+		$text .= $form->submit('submit', LAN_NODEJS_NOTIFY_FRONT_05);
+		$text .= '</div>';
+
+		$text .= $form->close();
 
 		e107::getRender()->tablerender(LAN_NODEJS_NOTIFY_FRONT_01, $text);
 		unset($text);
 	}
+
+
+	/**
+	 * Load field items using plugin addon files.
+	 *
+	 * @return array
+	 */
+	function getFormItems()
+	{
+		$sql = e107::getDb();
+
+		$items = array();
+		$enabledPlugins = array();
+
+		// Get list of enabled plugins.
+		$sql->select("plugin", "*", "plugin_id !='' order by plugin_path ASC");
+		while($row = $sql->fetch())
+		{
+			if($row['plugin_installflag'] == 1)
+			{
+				$enabledPlugins[] = $row['plugin_path'];
+			}
+		}
+
+		$addonList = e107::getPlugConfig('nodejs_notify')->get('nodejs_notify_addon_list', array());
+		foreach($addonList as $plugin)
+		{
+			if(in_array($plugin, $enabledPlugins))
+			{
+				$file = e_PLUGIN . $plugin . '/e_nodejs_notify.php';
+
+				if(is_readable($file))
+				{
+					e107_require_once($file);
+					$addonClass = $plugin . '_nodejs_notify';
+
+					if(class_exists($addonClass))
+					{
+						$addon = new $addonClass();
+
+						if(method_exists($addon, 'configurationItems'))
+						{
+							$return = $addon->configurationItems();
+							if(is_array($return))
+							{
+								$items[$plugin] = $return;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return $items;
+	}
+
+
+	function loadIncludes()
+	{
+		e107::css('nodejs_notify', 'libraries/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css');
+		e107::js('nodejs_notify', 'libraries/bootstrap-switch/js/bootstrap-switch.min.js', 'jquery', 5);
+		e107::js('nodejs_notify', 'js/nodejs_notify.notifications.js', 'jquery', 5);
+
+		e107::js('settings', array('nodejs_notify' => array(
+			'onText'  => LAN_NODEJS_NOTIFY_FRONT_06,
+			'offText' => LAN_NODEJS_NOTIFY_FRONT_07,
+		)));
+	}
+
 }
+
 
 new notifications();
 
