@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Definition of english strings for common usage.

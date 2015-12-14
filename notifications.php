@@ -66,7 +66,8 @@ class notifications
 		}
 		else
 		{
-
+			header('Location: ' . e_HTTP);
+			exit;
 		}
 	}
 
@@ -141,7 +142,7 @@ class notifications
 
 			$group = array(
 				'group_title'       => $data['group_title'],
-				'group_description' => LAN_NODEJS_NOTIFY_FRONT_08 . ' ' . $data['group_description'],
+				'group_description' => $data['group_description'],
 				'group_items'       => $items,
 			);
 
