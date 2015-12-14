@@ -5,9 +5,9 @@ Displaying realtime notifications originated from Node.js server. The plugin use
 
 Requirements:
 - e107 CMS v2
-- NodeJS (*nodejs*) plugin
-- (optional) NodeJS PM (*nodejs_pm*) plugin
-- (optional) NodeJS Forum (*nodejs_forum*) plugin [under development]
+- Node.js (*nodejs*) plugin
+- (optional) Node.js PM (*nodejs_pm*) plugin
+- (optional) Node.js Forum (*nodejs_forum*) plugin [under development]
 
 Features:
 - Broadcast notification: Admins can send broadcast messages to logged in users
@@ -30,10 +30,10 @@ Screenshots
 #### Admin UI
 ![Screenshot 1](https://www.dropbox.com/s/8xsrml04thjsqag/01.png?dl=1)
 
-#### Example for displaying broadcast notification popup message, which was sent from Admin UI.
+#### Displaying broadcast notification popup message, which was sent from Admin UI.
 ![Screenshot 2](https://www.dropbox.com/s/3pbqngycy86jnq1/02.png?dl=1)
 
-#### Global Notification Settings form (currently I use 'nodejs_forum' and 'nodejs_pm' plugins)
+#### Global Notification Settings form (*'nodejs_forum'* and *'nodejs_pm'* plugins are in use)
 ![Screenshot 3](https://www.dropbox.com/s/ekmhwvcqp9zwt3r/03.png?dl=1)
 
 
