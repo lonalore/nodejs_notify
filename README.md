@@ -1,7 +1,7 @@
-Node.js Notification (e107 v2 plugin)
-=====================================
+Node.js Notify (e107 v2 plugin)
+===============================
 
-Displaying realtime notification from Node.js. The plugin uses the jGrowl jQuery library to display messages, and AudioJS to play alert sound.
+Displaying realtime notifications originated from Node.js server. The plugin uses the jGrowl jQuery library to display messages, and AudioJS to play sound alert.
 
 Requirements:
 - e107 CMS v2
