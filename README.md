@@ -5,14 +5,14 @@ Displaying realtime notifications originated from Node.js server. The plugin use
 
 Requirements:
 - e107 CMS v2
-- NodeJS (nodejs) plugin
-- (optional) NodeJS PM (nodejs_pm) plugin
-- (optional) NodeJS Forum (nodejs_forum) plugin [under development]
+- NodeJS (*nodejs*) plugin
+- (optional) NodeJS PM (*nodejs_pm*) plugin
+- (optional) NodeJS Forum (*nodejs_forum*) plugin [under development]
 
 Features:
 - Broadcast notification: Admins can send broadcast messages to logged in users
 - Provides a NodeJS (JavaScript) callback to display messages
-- Provides a simple API to allow other plugins to use a global "Notification Settings" form, where user can enable/disable diferent kind of notifications (popup message and/or sound alert). To use this global form, you have to use 'e_nodejs_notify.php' addon file in your plugin directory, and you have to define two EUFs (Extended User Field) in your plugin.xml. These EUF fields store user defined configurations to handle alert messages and sounds. You have to define two EUF fields per configuration items. How does it work? See examples in 'nodejs_pm' and 'nodejs_forum' plugins.
+- Provides a simple API to allow other plugins to use a global "Notification Settings" form, where user can enable/disable diferent kind of notifications (popup message and/or sound alert). To use this global form, you have to use *'e_nodejs_notify.php'* addon file in your plugin directory, and you have to define two EUFs (Extended User Field) in your *plugin.xml*. These EUF fields store user defined configurations to handle alert messages and sounds. You have to define two EUF fields to each configuration item. How does it work? See usage in *'nodejs_pm'* and *'nodejs_forum'* plugins.
 
 ### Questions about this project?
 
@@ -27,13 +27,13 @@ If you think this plugin is useful and saves you a lot of work, a lot of costs (
 Screenshots
 ===========
 
-### Admin UI
+#### Admin UI
 ![Screenshot 1](https://www.dropbox.com/s/8xsrml04thjsqag/01.png?dl=1)
 
-### Example for displaying broadcast notification popup message, which was sent from Admin UI.
+#### Example for displaying broadcast notification popup message, which was sent from Admin UI.
 ![Screenshot 2](https://www.dropbox.com/s/3pbqngycy86jnq1/02.png?dl=1)
 
-### Global Notification Settings form (currently I use 'nodejs_forum' and 'nodejs_pm' plugins)
+#### Global Notification Settings form (currently I use 'nodejs_forum' and 'nodejs_pm' plugins)
 ![Screenshot 3](https://www.dropbox.com/s/ekmhwvcqp9zwt3r/03.png?dl=1)
 
 
