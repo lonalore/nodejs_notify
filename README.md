@@ -5,9 +5,9 @@ Displaying realtime notifications originated from Node.js server. The plugin use
 
 Requirements:
 - e107 CMS v2
-- NodeJS plugin (nodejs)
-- NodeJS PM (optional)
-- NodeJS Forum (optional) [under development]
+- NodeJS (nodejs) plugin
+- (optional) NodeJS PM (nodejs_pm) plugin
+- (optional) NodeJS Forum (nodejs_forum) plugin [under development]
 
 Features:
 - Broadcast notification: Admins can write broadcast messages for every logged in user
