@@ -75,7 +75,7 @@ class nodejs_notify_shortcodes extends e_shortcode
 
 		$name = $this->var['item_alert'];
 		$value = 1;
-		$checked = boolval(vartrue($this->defaultValues[$name], 1));
+		$checked = ((!isset($this->defaultValues[$name])) ? 1 : boolval(vartrue($this->defaultValues[$name], 0)));
 		$options = array(
 			'class' => 'nodejs-notify-settings-checkbox',
 		);
@@ -90,7 +90,7 @@ class nodejs_notify_shortcodes extends e_shortcode
 
 		$name = $this->var['item_sound'];
 		$value = 1;
-		$checked = boolval(vartrue($this->defaultValues[$name], 1));
+		$checked = ((!isset($this->defaultValues[$name])) ? 1 : boolval(vartrue($this->defaultValues[$name], 0)));
 		$options = array(
 			'class' => 'nodejs-notify-settings-checkbox',
 		);
