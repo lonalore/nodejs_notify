@@ -90,14 +90,23 @@ class notifications
 			}
 		}
 
-		$update = array();
+		$fields = array();
 		foreach($allowedFields as $field)
 		{
-			$update[$field] = (int) vartrue($_POST[$field], 0);
+			$fields[$field] = (int) vartrue($_POST[$field], 0);
 		}
+
+		$update = $fields;
 		$update['WHERE'] = 'user_extended_id = ' . USERID;
 
-		$db->update('user_extended', $update);
+		$result = $db->update('user_extended', $update);
+
+		if($result == 0)
+		{
+			$fields['user_extended_id'] = USERID;
+			$db->insert('user_extended', $fields);
+		}
+
 		$ms->addSuccess(LAN_NODEJS_NOTIFY_FRONT_04);
 	}
 
