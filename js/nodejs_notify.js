@@ -30,28 +30,11 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
     e107.Nodejs.callbacks.nodejsNotifySoundAlert = {
         callback: function () {
-            var settings = e107.settings.nodejs_notify,
-                audioSel = 'audio[id*="pm-alert"]',
-                html;
-
+            var settings = e107.settings.nodejs_notify;
             var soundPath = settings.sound_path + '/sounds/message.mp3';
-            html = '<audio id="pm-alert-2" class="alert" src="' + soundPath + '"></audio>';
-
-            $('body').append(html);
-
-            if ($(audioSel).length) {
-                $(audioSel).parent('.audiojs').find('.pause').click();
-                $(audioSel).parent('.audiojs').remove();
-            }
-
-            $audionInstance = audiojs.create($(audioSel));
-
-            if ($audionInstance[0].settings.hasFlash && $audionInstance[0].settings.useFlash) {
-                $audionInstance[0].settings.autoplay = true;
-            }
-
-            $(audioSel).parent('.audiojs').find('.play').click();
-            $(audioSel).parent('.audiojs').addClass('pn-nj-audiojs').hide();
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', soundPath);
+            audioElement.play();
         }
     };
 
