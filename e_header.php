@@ -32,12 +32,12 @@ class nodejs_notify_e_header
 	{
 
 		e107::css('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.min.css');
-		e107::js('nodejs_notify', 'libraries/jgrowl/jquery.jgrowl.min.js', 'jquery', 2);
+		e107::js('footer', '{e_PLUGIN}nodejs_notify/libraries/jgrowl/jquery.jgrowl.min.js', 'jquery', 2);
 
 		$time = e107::getPlugConfig('nodejs_notify')->getPref('nodejs_notify_time', 3);
 		$position = e107::getPlugConfig('nodejs_notify')->getPref('nodejs_notify_pos', 'bottom-left');
 
-		e107::js('nodejs_notify', 'libraries/audiojs/audio.min.js', 'jquery', 2);
+		e107::js('footer', '{e_PLUGIN}nodejs_notify/libraries/audiojs/audio.min.js', 'jquery', 2);
 
 		$js_options = array(
 			'notification_time' => $time,
@@ -46,7 +46,7 @@ class nodejs_notify_e_header
 		);
 
 		e107::js('settings', array('nodejs_notify' => $js_options));
-		e107::js('nodejs_notify', 'js/nodejs_notify.js', 'jquery', 5);
+		e107::js('footer', '{e_PLUGIN}nodejs_notify/js/nodejs_notify.js', 'jquery', 5);
 	}
 }
 
