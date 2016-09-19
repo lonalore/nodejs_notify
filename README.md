@@ -37,3 +37,8 @@ Screenshots
 ![Screenshot 3](https://www.dropbox.com/s/ekmhwvcqp9zwt3r/03.png?dl=1)
 
 
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/lonalore/nodejs_notify/badge.svg?style=beer-square)](https://beerpay.io/lonalore/nodejs_notify)  [![Beerpay](https://beerpay.io/lonalore/nodejs_notify/make-wish.svg?style=flat-square)](https://beerpay.io/lonalore/nodejs_notify?focus=wish)
