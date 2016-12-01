@@ -194,31 +194,46 @@ class notifications
 		}
 
 		$addonList = e107::getPlugConfig('nodejs_notify')->get('nodejs_notify_addon_list', array());
+
 		foreach($addonList as $plugin)
 		{
-			if(in_array($plugin, $enabledPlugins))
+			if(!in_array($plugin, $enabledPlugins))
 			{
-				$file = e_PLUGIN . $plugin . '/e_nodejs_notify.php';
+				continue;
+			}
 
-				if(is_readable($file))
-				{
-					e107_require_once($file);
-					$addonClass = $plugin . '_nodejs_notify';
+			$file = e_PLUGIN . $plugin . '/e_nodejs_notify.php';
 
-					if(class_exists($addonClass))
-					{
-						$addon = new $addonClass();
+			if(!is_readable($file))
+			{
+				continue;
+			}
 
-						if(method_exists($addon, 'configurationItems'))
-						{
-							$return = $addon->configurationItems();
-							if(is_array($return))
-							{
-								$items[$plugin] = $return;
-							}
-						}
-					}
-				}
+			e107_require_once($file);
+			$addonClass = $plugin . '_nodejs_notify';
+
+			if(!class_exists($addonClass))
+			{
+				continue;
+			}
+
+			$addon = new $addonClass();
+			$method = 'config';
+
+			if(!method_exists($addon, $method))
+			{
+				$method = 'configurationItems';
+			}
+
+			if(!method_exists($addon, $method))
+			{
+				continue;
+			}
+
+			$return = $addon->$method();
+			if(is_array($return))
+			{
+				$items[$plugin] = $return;
 			}
 		}
 
